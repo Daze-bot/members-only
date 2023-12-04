@@ -5,7 +5,24 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <nav>
+      <div class="navLogo">
+        <p>Members Only</p>
+      </div>
+      <% if (user) { %>
+        <div class="navButtons">
+          <p><%= user.username %>, </p>
+          <a href="/users/log-out"><button>Log Out</button></a>
+        </div>
+      <% } else { %>
+        <div class="navButtons">
+          <a href="/users/log-in"><button>Log In</button></a>
+          <a href="/users/sign-up"><button>Sign Up</button></a>
+        </div>
+      <% } %>
+    </nav>
+    <div class="content">
+      <%- include(block_content) %>
+    </div>
   </body>
 </html>

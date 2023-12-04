@@ -1,3 +1,7 @@
+:root {
+  --daze-blue: #00B7FF;
+}
+
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -10,7 +14,6 @@
 
 body {
   min-height: 100vh;
-  padding: 40px;
 }
 
 a {
@@ -19,4 +22,55 @@ a {
 
 a:hover {
   color: #0095cf;
+}
+
+nav {
+  height: 95px;
+  background: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  box-shadow: 0 4px 8px #0006; 
+}
+
+.navLogo {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0 20px;
+}
+
+.navButtons {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+nav button {
+  border: none;
+  background-color: var(--daze-blue);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  width: 120px;
+}
+
+nav button:hover {
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+nav button:active {
+  box-shadow: none;
+}
+
+.content {
+  padding: 40px;
 }
