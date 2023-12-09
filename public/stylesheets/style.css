@@ -51,7 +51,19 @@ nav {
   gap: 30px;
 }
 
-nav button {
+.navButtons p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.navButtons span {
+  font-weight: 400;
+  opacity: .6;
+}
+
+nav button,
+form button,
+.no-user-content button {
   border: none;
   background-color: var(--daze-blue);
   color: white;
@@ -62,15 +74,72 @@ nav button {
   width: 120px;
 }
 
-nav button:hover {
+nav button:hover,
+form button:hover,
+.no-user-content button:hover {
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-nav button:active {
+nav button:active,
+form button:active,
+.no-user-content button:active {
   box-shadow: none;
+}
+
+.no-user-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 
 .content {
   padding: 40px;
+}
+
+.content h1 {
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  width: 400px;
+}
+
+.submitOptions {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sign-up-form,
+.log-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-errors h4 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
 }

@@ -6,20 +6,7 @@
   </head>
   <body>
     <nav>
-      <div class="navLogo">
-        <p>Members Only</p>
-      </div>
-      <% if (user) { %>
-        <div class="navButtons">
-          <p><%= user.username %>, </p>
-          <a href="/users/log-out"><button>Log Out</button></a>
-        </div>
-      <% } else { %>
-        <div class="navButtons">
-          <a href="/users/log-in"><button>Log In</button></a>
-          <a href="/users/sign-up"><button>Sign Up</button></a>
-        </div>
-      <% } %>
+      <%- include(nav_content) %>
     </nav>
     <div class="content">
       <%- include(block_content) %>

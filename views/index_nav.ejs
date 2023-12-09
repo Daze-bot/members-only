@@ -1,0 +1,14 @@
+<div class="navLogo">
+  <p>Members Only</p>
+</div>
+<% if (user) { %>
+  <div class="navButtons">
+    <p><span>Hi</span> <%= user.username %><span>!</span> </p>
+    <a href="/users/log-out"><button>Log Out</button></a>
+  </div>
+<% } else { %>
+  <div class="navButtons">
+    <a href="/users/log-in"><button>Log In</button></a>
+    <a href="/users/sign-up"><button>Sign Up</button></a>
+  </div>
+<% } %>
