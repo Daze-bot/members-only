@@ -151,7 +151,9 @@ form textarea {
 .log-in-form,
 .new-message,
 .home,
-.member-request {
+.member-request,
+.delete-message,
+.edit-message {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,6 +224,20 @@ form textarea {
   border-radius: 12px;
   min-width: 450px;
   background-color: white;
+  position: relative;
+}
+
+.admin-buttons {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.admin-buttons button {
+  padding: 8px;
+  font-size: 1rem;
 }
 
 .post-info {
@@ -238,9 +254,47 @@ form textarea {
   max-width: 40%;
 }
 
+.home-messages li h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(900px, 60vw);
+}
+
 .messageUserText {
   padding-left: 20px;
   word-wrap: break-word;
+}
+
+.delete-message h2 {
+  margin-bottom: 40px;
+}
+
+.delete-message button {
+  background-color: rgb(173, 13, 13);
+}
+
+.delete-message button:hover {
+  background-color: rgb(212, 16, 16);
+}
+
+.message-info {
+  position: relative;
+  border: 2px dashed var(--daze-blue);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 550px;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.message-info div p:first-child {
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 5px;
 }
 
 #refresh {

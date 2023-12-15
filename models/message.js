@@ -18,4 +18,12 @@ MessageSchema.virtual('url').get(function () {
   return `/message/${this._id}`;
 });
 
+MessageSchema.virtual('editMessage').get(function () {
+  return `/message/${this._id}/edit`;
+});
+
+MessageSchema.virtual('deleteMessage').get(function () {
+  return `/message/${this._id}/delete`;
+});
+
 module.exports = mongoose.model("Message", MessageSchema);

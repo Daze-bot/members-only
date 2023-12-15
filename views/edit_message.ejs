@@ -1,0 +1,32 @@
+<div class="edit-message">
+  <% if (user && user.admin === true) { %>
+    <h1><%= title %></h1>
+    <form action="" method="POST">
+      <input type="hidden" name="messageUser" value="<%= message.user %>">
+
+      <label for="messageTitle">Title</label>
+      <input name="messageTitle" id="messageTitle" type="text" placeholder="Title" value="<%= message.title %>">
+
+      <label for="userMessage">Message (1400 character limit):</label>
+      <textarea id="userMessage" name="userMessage" rows="5" maxlength="1400"><%= message.text %></textarea>
+
+      <div class="submitOptions">
+        <button type="submit">Update Message</button>
+        <a href="/">cancel</a>
+      </div>
+    </form>
+    <% if (errors) { %>
+      <ul class="form-errors">
+        <h4 class="text-danger">Errors:</h4>
+        <% errors.forEach(error => { %>
+          <li>- <%= error %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+  <% } else { %>
+    <div class="bad-access">
+      <h1>Only admins may edit messages</h1>
+      <a href="/">Return Home</a>
+    </div>
+  <% } %>
+</div>

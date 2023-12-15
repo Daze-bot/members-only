@@ -132,3 +132,90 @@ exports.member_request_post = [
     }
   }),
 ];
+
+exports.edit_message_get = asyncHandler(async (req, res, next) => {
+  const message = await Message.findById(req.params.id).populate("user").exec();
+
+  if (message === null) {
+    const err = new Error("Message not found");
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render('index', {
+    block_content: 'edit_message',
+    nav_content: 'index_nav',
+    title: "Edit Message",
+    message: message,
+    user: res.locals.currentUser,
+    errors: undefined
+  });
+});
+
+exports.edit_message_post = [
+  body('messageTitle', "Title must not be empty")
+    .trim()
+    .isLength({ min: 1 }),
+  body('userMessage', "Message must not be empty")
+    .trim()
+    .isLength({ min: 1 }),
+  body('messageTitle', "Title can not be more than 60 characters")
+    .trim()
+    .isLength({ max: 60 }),
+  body('userMessage', "Message can not be more than 1400 characters")
+    .trim()
+    .isLength({ max: 1400 }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = [];
+
+    const updatedMessage = new Message({
+      title: req.body.messageTitle,
+      text: req.body.userMessage,
+      user: req.body.messageUser,
+      _id: req.params.id,
+    });
+
+    const validationErrors = validationResult(req).array();
+    validationErrors.forEach(err => {
+      errors.push(err.msg);
+    });
+
+    if (errors.length > 0) {
+      res.render('index', {
+        block_content: 'edit_message',
+        nav_content: 'index_nav',
+        title: "Edit Message",
+        message: updatedMessage,
+        user: res.locals.currentUser,
+        errors: errors
+      });
+      return;
+    } else {
+      await Message.findByIdAndUpdate(req.params.id, updatedMessage, {});
+      res.redirect('/');
+    }
+  }),
+];
+
+exports.delete_message_get = asyncHandler(async (req, res, next) => {
+  const message = await Message.findById(req.params.id).populate("user").exec();
+
+  if (message === null) {
+    res.redirect('/');
+  }
+
+  res.render('index', {
+    block_content: 'delete_message',
+    nav_content: 'index_nav',
+    title: "Delete Message",
+    message: message,
+    user: res.locals.currentUser,
+  })
+});
+
+exports.delete_message_post = asyncHandler(async (req, res, next) => {
+  await Message.findByIdAndDelete(req.body.messageID);
+  res.redirect('/');
+});
+

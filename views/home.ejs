@@ -21,6 +21,12 @@
         <% messages.forEach(message => { %>
           <% if (user.status === "Member") { %>
             <li>
+              <% if (user.admin === true) { %>
+                <div class="admin-buttons">
+                  <a href="<%= message.editMessage %>"><button>Edit</button></a>
+                  <a href="<%= message.deleteMessage %>"><button>Delete</button></a>
+                </div>
+              <% } %>
               <h2>
                 <%= message.title %>
               </h2>
@@ -38,6 +44,12 @@
             </li>
           <% } else { %>
             <li>
+              <% if (user.admin === true) { %>
+                <div class="admin-buttons">
+                  <a href="<%= message.editMessage %>"><button>Edit</button></a>
+                  <a href="<%= message.deleteMessage %>"><button>Delete</button></a>
+                </div>
+              <% } %>
               <h2>
                 <%= message.title %>
               </h2>
