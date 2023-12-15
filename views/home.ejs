@@ -1,15 +1,61 @@
 <div class="home">
   <% if (user) { %>
-    <div>
-      <p>Welcome back, <%= user.username %></p>
-      <p>Status: <%= user.status %></p>
-      <p>View Messages Below</p>
-      <p>Create New Message</p>
+    <div class="homeInfo">
+      <h1>Welcome back, <%= user.username %></h1>
+    </div>   
+    <% if (user.status === "Member") { %>
+      <a href="/new-message"><button>Create New Message</button></a>
+    <% } else { %>
+      <div class="guest-info">
+        <p>As a guest, you are unable to create new messages and some message information is hidden.</p>
+        <p><a href="/member-request">Click here</a> to become a member!</p>
+      </div>
+    <% } %>
+    <div class="home-messages">
+      <a id="refresh" href="/"><img src="images/refresh.svg" alt="refresh"/></a>
+      <h2>Messages</h2>
+      <ul class="message-display">
+        <% if (messages.length === 0) { %>
+          <p>There are no messages</p>
+        <% } %>
+        <% messages.forEach(message => { %>
+          <% if (user.status === "Member") { %>
+            <li>
+              <h2>
+                <%= message.title %>
+              </h2>
+              <p class="messageUserText">
+                <%= message.text %>
+              </p>
+              <div class="post-info">
+                <p class="messageUserName">
+                  <%= message.user.username %>
+                </p>
+                <p class="messageTimeAdded">
+                  <%= message.formatDate %>
+                </p>
+              </div>
+            </li>
+          <% } else { %>
+            <li>
+              <h2>
+                <%= message.title %>
+              </h2>
+              <p class="messageUserText">
+                <%= message.text %>
+              </p>
+            </li>
+          <% } %>
+        <% }) %>
+      </ul>
+      <% if (count > 40) { %>
+        <a id="viewChange" href="/all-messages">View all messages</a>
+      <% } %>
     </div>
   <% } else { %> 
     <div class="no-user-content">
-      <p><a href="/users/log-in"><button>Log In</button></a> to view messages. %></p>
-      <p>Not a member? <a href="/users/sign-up"><button>Sign Up</button></a> now!</p>
+      <p><a href="/users/log-in">Log In</a> to view messages. %></p>
+      <p>Not a member? <a href="/users/sign-up">Sign Up</a> now!</p>
     </div>
   <% } %>
 </div>

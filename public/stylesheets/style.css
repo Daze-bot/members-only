@@ -17,11 +17,11 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: var(--daze-blue);
 }
 
 a:hover {
-  color: #0095cf;
+  color: #00597c;
 }
 
 nav {
@@ -61,9 +61,13 @@ nav {
   opacity: .6;
 }
 
+nav button {
+  width: 120px;
+}
+
 nav button,
 form button,
-.no-user-content button {
+.home button {
   border: none;
   background-color: var(--daze-blue);
   color: white;
@@ -71,19 +75,19 @@ form button,
   border-radius: 8px;
   font-weight: 700;
   font-size: 1.5rem;
-  width: 120px;
 }
 
 nav button:hover,
 form button:hover,
-.no-user-content button:hover {
+.home button:hover {
   cursor: pointer;
+  background-color: #0095cf;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 nav button:active,
 form button:active,
-.no-user-content button:active {
+.home button:active {
   box-shadow: none;
 }
 
@@ -91,7 +95,7 @@ form button:active,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
   font-size: 1.5rem;
 }
@@ -115,12 +119,17 @@ form label {
   margin-bottom: 5px;
 }
 
-form input {
+form input,
+form textarea {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid gray;
   margin-bottom: 20px;
   width: 400px;
+}
+
+form textarea {
+  resize: none;
 }
 
 .submitOptions {
@@ -132,7 +141,9 @@ form input {
 }
 
 .sign-up-form,
-.log-in-form {
+.log-in-form,
+.new-message,
+.home {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,4 +153,114 @@ form input {
   margin-top: 40px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.home-link {
+  color: white;
+}
+
+.home-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home {
+  gap: 20px;
+}
+
+.homeInfo,
+.guest-info {
+  text-align: center;
+}
+
+.guest-info p {
+  font-size: 1.4rem;
+}
+
+.homeInfo h1 {
+  margin-bottom: 0;
+}
+
+.new-message {
+  display: flex;
+  flex-direction: column;
+}
+
+.bad-access {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-messages {
+  position: relative;
+  border: 2px dashed var(--daze-blue);
+  border-radius: 12px;
+  padding: 50px;
+  min-width: 550px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.home-messages li {
+  outline: 1px solid black;
+  padding: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 12px;
+  min-width: 450px;
+  background-color: white;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--daze-blue);
+}
+
+.messageUserName {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40%;
+}
+
+.messageUserText {
+  padding-left: 20px;
+  word-wrap: break-word;
+}
+
+#refresh {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#refresh:hover {
+  box-shadow: none;
+}
+
+#refresh img {
+  transition: all 1s;
+  width: 30px;
+}
+
+#refresh img:hover {
+  transform: rotate(180deg);
+}
+
+#viewChange {
+  align-self: center;
 }

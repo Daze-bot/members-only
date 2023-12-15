@@ -1,0 +1,30 @@
+<div class="new-message">
+  <% if (user && user.status === "Member") { %>
+    <h1><%= title %></h1>
+    <form action="" method="POST">
+      <label for="messageTitle">Title</label>
+      <input name="messageTitle" id="messageTitle" type="text" placeholder="Title" value="<%= message_title %>">
+
+      <label for="userMessage">Message (1400 character limit):</label>
+      <textarea id="userMessage" name="userMessage" rows="5" maxlength="1400"><%= user_message %></textarea>
+
+      <div class="submitOptions">
+        <button type="submit">Create Message</button>
+        <a href="/">cancel</a>
+      </div>
+    </form>
+    <% if (errors) { %>
+      <ul class="form-errors">
+        <h4 class="text-danger">Errors:</h4>
+        <% errors.forEach(error => { %>
+          <li>- <%= error %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+  <% } else { %>
+    <div class="bad-access">
+      <h1>You must be a signed-in Member to view this page</h1>
+      <a href="/">Return Home</a>
+    </div>
+  <% } %>
+</div>

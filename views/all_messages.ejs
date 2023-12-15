@@ -1,0 +1,27 @@
+<div class="all-messages">
+  <h1><%= title %></h1>
+  <a id="refresh" href="/all-messages"><img src="images/refresh.svg" alt="refresh"/></a>
+  <ul class="message-display">
+    <% messages.forEach(message => { %>
+      <li>
+        <% if (user.status === "Member") { %>
+          <div class="postHeader">
+            <p class="messageUserName">
+              <%= message.user.username %>
+            </p>
+            <p class="messageTimeAdded">
+              <%= message.formatDate %>
+            </p>
+          </div>
+        <% } %
+        <h2>
+          <%= message.title %>
+        </h2>
+        <p class="messageUserText">
+          <%= message.text %>
+        </p>
+      </li>
+    <% }) %>
+  </ul>
+  <a id="viewChange" href="/">Return to Home</a>
+</div>
