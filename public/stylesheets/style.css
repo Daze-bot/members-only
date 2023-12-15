@@ -72,7 +72,8 @@ nav button {
 
 nav button,
 form button,
-.home button {
+.home button,
+.home-messages button {
   border: none;
   background-color: var(--daze-blue);
   color: white;
@@ -84,7 +85,8 @@ form button,
 
 nav button:hover,
 form button:hover,
-.home button:hover {
+.home button:hover,
+.home-messages button:hover {
   cursor: pointer;
   background-color: #0095cf;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -92,7 +94,8 @@ form button:hover,
 
 nav button:active,
 form button:active,
-.home button:active {
+.home button:active,
+.home-messages button:active {
   box-shadow: none;
 }
 
@@ -270,11 +273,13 @@ form textarea {
   margin-bottom: 40px;
 }
 
-.delete-message button {
+.delete-message button,
+#danger {
   background-color: rgb(173, 13, 13);
 }
 
-.delete-message button:hover {
+.delete-message button:hover,
+#danger:hover {
   background-color: rgb(212, 16, 16);
 }
 
@@ -294,7 +299,11 @@ form textarea {
 .message-info div p:first-child {
   font-weight: 700;
   text-decoration: underline;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.message-info div p:last-child {
+  padding-left: 20px;
 }
 
 #refresh {
