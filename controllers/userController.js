@@ -69,6 +69,7 @@ exports.sign_up_post = [
     .custom((value, { req }) => {
       return value === req.body.password;
     }),
+    
   asyncHandler(async (req, res, next) => {
     const errors = [];
 

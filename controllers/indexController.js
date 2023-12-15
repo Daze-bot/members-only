@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Message = require('../models/message');
+const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
 
 exports.index = asyncHandler(async (req, res, next) => {
@@ -19,7 +20,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 exports.new_message_get = asyncHandler(async (req, res, next) => {
   res.render('index', {
     block_content: 'new_message',
-    nav_content: 'user_nav',
+    nav_content: 'index_nav',
     title: "Create New Message",
     user: res.locals.currentUser,
     errors: undefined,
@@ -59,7 +60,7 @@ exports.new_message_post = [
     if (errors.length > 0) {
       res.render('index', {
         block_content: 'new_message',
-        nav_content: 'user_nav',
+        nav_content: 'index_nav',
         title: "Create New Message",
         user: res.locals.currentUser,
         errors: errors,
@@ -75,13 +76,59 @@ exports.new_message_post = [
 ];
 
 exports.all_messages = asyncHandler(async (req, res, next) => {
-  res.send("Not Yet Implemented");
+  const allMessages = await Message.find().populate("user").sort({ dateAdded: -1 }).exec();
+
+  res.render('index', {
+    block_content: 'all_messages',
+    nav_content: 'index_nav',
+    title: 'All Messages',
+    user: res.locals.currentUser,
+    messages: allMessages,
+  });
 });
 
 exports.member_request_get = asyncHandler(async (req, res, next) => {
-  res.send("Not Yet Implemented");
+  res.render('index', {
+    block_content: 'member-request',
+    nav_content: 'index_nav',
+    title: "Member Request",
+    errors: undefined,
+    user: res.locals.currentUser,
+  });
 });
 
-exports.member_request_post = asyncHandler(async (req, res, next) => {
-  res.send("Not Yet Implemented");
-});
+exports.member_request_post = [
+  body('memberCode', "Incorrect Code")
+    .trim()
+    .custom(value => {
+      if (value.toLowerCase() === "pizza") {
+        return true;
+      }
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = [];
+
+    const activeUser = await User.findById(res.locals.currentUser._id);
+
+    const validationErrors = validationResult(req).array();
+    validationErrors.forEach(err => {
+      errors.push(err.msg);
+    });
+
+    if (errors.length > 0) {
+      res.render('index', {
+        block_content: 'member-request',
+        nav_content: 'index_nav',
+        title: "Member Request",
+        errors: errors,
+        user: res.locals.currentUser,
+      });
+      return;
+    } else {
+      activeUser.status = "Member";
+      await activeUser.save();
+      res.redirect('/');
+    }
+  }),
+];

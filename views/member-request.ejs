@@ -1,24 +1,33 @@
-<div class="log-in-form">
-  <h1><%= title %></h1>
-  <form action="" method="POST">
-    <label for="username">Username</label>
-    <input name="username" id="username" type="text" placeholder="Username" value="<%= username %>">
+<div class="member-request">
+  <% if (user && user.status === "Guest") { %>
+    <h1><%= title %></h1>
+    <form action="" method="POST">
+      <label for="memberCode">Secret Code:</label>
+      <input name="memberCode" id="memberCode" type="text">
 
-    <label for="password">Password</label>
-    <input name="password" id="password" type="password" placeholder="Password">
-    
-    <div class="submitOptions">
-      <button type="submit">Log In</button>
-      <a href='/'>cancel</a>
+      <div class="submitOptions">
+        <button type="submit">Become a Member</button>
+        <a href='/'>cancel</a>
+      </div>
+    </form>
+
+    <% if (errors) { %>
+      <ul class="form-errors">
+        <h4 class="text-danger">Errors:</h4>
+        <% errors.forEach(error => { %>
+          <li>- <%= error %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+  <% } else if (user && user.status === "Member") { %>
+    <div class="bad-access">
+      <h1>You are already a Member!</h1>
+      <a href="/">Return Home</a>
     </div>
-  </form>
-
-  <% if (errors) { %>
-    <ul class="form-errors">
-      <h4 class="text-danger">Errors:</h4>
-      <% errors.forEach(error => { %>
-        <li>- <%= error %></li>
-      <% }) %>
-    </ul>
+  <% } else { %>
+    <div class="bad-access">
+      <h1>You must be signed-in to view this page</h1>
+      <a href="/">Return Home</a>
+    </div>
   <% } %>
 </div>

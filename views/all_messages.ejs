@@ -1,27 +1,43 @@
-<div class="all-messages">
-  <h1><%= title %></h1>
-  <a id="refresh" href="/all-messages"><img src="images/refresh.svg" alt="refresh"/></a>
-  <ul class="message-display">
-    <% messages.forEach(message => { %>
-      <li>
+<div class="home-messages">
+  <% if (user) { %>
+    <a id="refresh" href="/"><img src="images/refresh.svg" alt="refresh"/></a>
+    <h2>Messages</h2>
+    <ul class="message-display">
+      <% messages.forEach(message => { %>
         <% if (user.status === "Member") { %>
-          <div class="postHeader">
-            <p class="messageUserName">
-              <%= message.user.username %>
+          <li>
+            <h2>
+              <%= message.title %>
+            </h2>
+            <p class="messageUserText">
+              <%= message.text %>
             </p>
-            <p class="messageTimeAdded">
-              <%= message.formatDate %>
+            <div class="post-info">
+              <p class="messageUserName">
+                <%= message.user.username %>
+              </p>
+              <p class="messageTimeAdded">
+                <%= message.formatDate %>
+              </p>
+            </div>
+          </li>
+        <% } else { %>
+          <li>
+            <h2>
+              <%= message.title %>
+            </h2>
+            <p class="messageUserText">
+              <%= message.text %>
             </p>
-          </div>
-        <% } %
-        <h2>
-          <%= message.title %>
-        </h2>
-        <p class="messageUserText">
-          <%= message.text %>
-        </p>
-      </li>
-    <% }) %>
-  </ul>
-  <a id="viewChange" href="/">Return to Home</a>
+          </li>
+        <% } %>
+      <% }) %>
+    </ul>
+    <a id="viewChange" href="/">Return Home</a>
+  <% } else { %>
+    <div class="bad-access">
+      <h1>You must be a signed-in to view this page</h1>
+      <a href="/">Return Home</a>
+    </div>
+  <% } %>
 </div>
