@@ -204,6 +204,12 @@ form textarea {
   align-items: center;
 }
 
+.member-request form p {
+  margin-top: 40px;
+  text-align: center;
+  align-self: center;
+}
+
 .home-messages {
   position: relative;
   border: 2px dashed var(--daze-blue);
@@ -228,6 +234,12 @@ form textarea {
   min-width: 450px;
   background-color: white;
   position: relative;
+}
+
+.new-message input,
+.new-message textarea {
+  width: max(400px, 60vw);
+  font-size: 1.5rem;
 }
 
 .admin-buttons {
