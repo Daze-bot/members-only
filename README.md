@@ -12,6 +12,8 @@ An online chatroom
 
 Users must create an account in order to access the website.  Once created, they need to enter the secret code (hint provided) in order to become a member and gain full access to the chat
 
+### <a href="https://daze-members-only.fly.dev/" target="_blank">View Live</a>
+
 ### Features
 
 - MVC design pattern
@@ -65,7 +67,7 @@ Users must create an account in order to access the website.  Once created, they
 - Becoming a member:
 <div align="center">
   <kbd>
-    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXI3ZnV5MXZjc3VnY2QyMGt5bjc5cXRzb3JrN2lmb3ZldTVzbjFjdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZESouWvlwCkDWqsc7g/giphy.gif"/>
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTY3ZGFpY3hpc2pmOXI0azN6ajRxdjg2YjJpb2UyZHl2Yml6cmwxbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cQcm8s7ibCIsXtVLiZ/giphy.gif"/>
   </kbd>
 </div>
 
@@ -74,7 +76,7 @@ Users must create an account in order to access the website.  Once created, they
 - Chatting with members:
 <div align="center">
   <kbd>
-    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXI3ZnV5MXZjc3VnY2QyMGt5bjc5cXRzb3JrN2lmb3ZldTVzbjFjdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZESouWvlwCkDWqsc7g/giphy.gif"/>
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjVpd25oNmw0a28zYWlrbDJhMzNsOHdnY29pZW95bTY4d3gxa2p5NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PLSBJIAciPW48KXfoL/giphy.gif"/>
   </kbd>
 </div>
 
@@ -83,6 +85,6 @@ Users must create an account in order to access the website.  Once created, they
 - Admin controls:
 <div align="center">
   <kbd>
-    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXI3ZnV5MXZjc3VnY2QyMGt5bjc5cXRzb3JrN2lmb3ZldTVzbjFjdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZESouWvlwCkDWqsc7g/giphy.gif"/>
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGZ1dHA2M3R1eTF3bWl6a29jdHFyazN1YWZ4NzE5MG94dTQ0czc0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AA42xXizzta0YkAr1m/giphy.gif"/>
   </kbd>
 </div>
