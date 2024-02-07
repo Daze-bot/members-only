@@ -1,7 +1,7 @@
 <div class="home">
   <% if (user) { %>
     <div class="homeInfo">
-      <h1>Welcome back, <%= user.username %></h1>
+      <h1>Welcome, <%= user.username %></h1>
     </div>   
     <% if (user.status === "Member") { %>
       <a href="/new-message"><button>Create New Message</button></a>
